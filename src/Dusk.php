@@ -94,6 +94,12 @@ class Dusk
     }
 
 
+    public function executeScript($script)
+    {
+        return $this->getDriver()->executeScript($script);
+    }
+
+
     /**
      * Ensure the browser is closed down after use.
      */
