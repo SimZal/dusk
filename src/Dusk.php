@@ -15,6 +15,7 @@ class Dusk
      */
     private $browser;
 
+    private $dir;
 
     /**
      * Create a new instance.
@@ -88,7 +89,17 @@ class Dusk
      */
     public function screenshot($filename)
     {
-        $this->getDriver()->takeScreenshot("/tmp/{$filename}.png");
+        $this->getDriver()->takeScreenshot($this->dir . "/{$filename}.png");
+
+        return $this;
+    }
+
+    public function screenshotDir($dir = null)
+    {
+        if( empty($dir) ){
+            return $this->dir;
+        }
+        $this->dir = $dir;
 
         return $this;
     }
