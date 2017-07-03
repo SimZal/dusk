@@ -29,6 +29,7 @@ class Dusk
         }
 
         $this->browser = new Browser($driver->getDriver());
+        $this->driver = $driver;
     }
 
 
