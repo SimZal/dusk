@@ -7,16 +7,8 @@
     "license": "Apache-2.0",
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "version": "dev-improvements",
-                "name": "SimZal/dusk-1",
-                "source": {
-                    "url": "https://github.com/SimZal/dusk-1.git",
-                    "type": "git",
-                    "reference": "improvements"
-                }
-            }
+            "type": "vcs",
+            "url": "https://github.com/SimZal/dusk-1.git"
         }        
     ],      
     "authors": [{
@@ -26,7 +18,7 @@
         "role": "Developer"
     }],
     "require": {
-        "SimZal/dusk-1": "*",
+        "laravel/dusk": "dev-improvements",
         "php": "^5.6|^7.0"
     },
     "require-dev": {
