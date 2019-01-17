@@ -5,6 +5,8 @@ namespace duncan3dc\Laravel\Drivers;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Laravel\Dusk\SupportsChrome;
+use Facebook\WebDriver\Chrome\ChromeOptions;
+use Facebook\WebDriver\Remote\WebDriverCapabilityType;
 
 class Chrome implements DriverInterface
 {
@@ -27,7 +29,17 @@ class Chrome implements DriverInterface
      */
     public function getDriver()
     {
-        return RemoteWebDriver::create("http://localhost:9515", DesiredCapabilities::chrome());
+            $options = (new ChromeOptions)->addArguments([
+        '--headless',
+        '--disable-gpu',
+        '--no-sandbox',
+        '--ignore-certificate-errors',
+    ]);
+        $cap = DesiredCapabilities::chrome();
+        $cap->setCapability(ChromeOptions::CAPABILITY, $options);
+        $cap->setCapability(WebDriverCapabilityType::ACCEPT_SSL_CERTS, true);
+        $cap->setCapability('acceptInsecureCerts', true);
+        return RemoteWebDriver::create("http://localhost:9515", $cap);
     }
 
 
