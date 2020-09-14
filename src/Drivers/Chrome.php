@@ -34,6 +34,7 @@ class Chrome implements DriverInterface
         '--disable-gpu',
         '--no-sandbox',
         '--ignore-certificate-errors',
+        'window-size=1280,960',
     ]);
         $cap = DesiredCapabilities::chrome();
         $cap->setCapability(ChromeOptions::CAPABILITY, $options);
